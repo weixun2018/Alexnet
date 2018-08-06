@@ -2,7 +2,7 @@
 ## 环境要求
 
 - Python 3
-- TensorFlow >= 1.12rc0
+- TensorFlow >= 1.8.0
 - Numpy
 
 

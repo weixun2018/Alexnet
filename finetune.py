@@ -20,7 +20,6 @@ import tensorflow as tf
 from alexnet import AlexNet
 from datagenerator import ImageDataGenerator
 from datetime import datetime
-from tensorflow.contrib.data import Iterator
 import time
 
 """
@@ -33,7 +32,7 @@ val_file = 'data/val.txt'
 
 # Learning params
 learning_rate = 0.001
-num_epochs = 20
+num_epochs = 100
 batch_size = 32
 
 # Network params
@@ -54,7 +53,7 @@ Main Part of the finetuning Script.
 
 # Create parent path if it doesn't exist
 if not os.path.exists(checkpoint_path):
-    os.mkdir(checkpoint_path)
+    os.makedirs(checkpoint_path)
 
 # Create parent path if it doesn't exist
 if not os.path.exists(filewriter_path):
@@ -75,7 +74,7 @@ with tf.device('/cpu:0'):
                                   shuffle=False)
 
     # create an reinitializable iterator given the dataset structure
-    iterator = Iterator.from_structure(tr_data.data.output_types, tr_data.data.output_shapes)
+    iterator = tf.data.Iterator.from_structure(tr_data.data.output_types, tr_data.data.output_shapes)
     print(tr_data.data.output_types, tr_data.data.output_shapes)
     next_batch = iterator.get_next()
 
