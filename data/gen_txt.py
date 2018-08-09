@@ -1,6 +1,6 @@
 import os
 
-dataset_dir = 'G:\\competition\\train'
+dataset_dir = 'G:\\competition\\my_train'
 print(os.listdir(dataset_dir))
 abs_dir = os.path.join(os.getcwd(), dataset_dir)
 directory = [d for d in os.listdir(dataset_dir) if os.path.isdir(os.path.join(abs_dir, d))]
